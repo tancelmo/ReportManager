@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:ReportManager">
+    <system:String x:Key="Tittle">pt-BR</system:String>
+    <system:String x:Key="InitSN">N de Série Inicial</system:String>
+    <system:String x:Key="FinalSN">N de Série Final</system:String>
+    <system:String x:Key="WarnFilter">Erro</system:String>
+    <TextBlock x:Key="DateFilter" Text="Selecionar data"/>
+    <TextBlock x:Key="DateFilterFrom" Text="From"/>
+    <TextBlock x:Key="DateFilterTo" Text="To"/>
+    <TextBlock x:Key="SnFilterFrom" Text="From"/>
+    <TextBlock x:Key="SnFilterTo" Text="To"/>
+    <TextBlock x:Key="SnFilter" Text="Selecionar Número de Série"/>
+    <TextBlock x:Key="GeneralSearchWarn" Text="Não é possível usar a pesquisa geral quando um filtro está selecionado!!!"/>
+    <TextBlock x:Key="GeneralSearchPlaceHolder" Text="Pesquisar (Ctrl+P)"/>
+    <TextBlock x:Key="Search" Text="P"/>
+
+</ResourceDictionary>
