@@ -8,9 +8,9 @@
         SizeChanged="Window_SizeChanged"
         WindowStartupLocation="CenterScreen"
         Style="{DynamicResource CustomWindowStyle}"
-        MinWidth="970"
+        MinWidth="990"
         MinHeight="530"
-        Title="Report Manager" Height="730" Width="1180">
+        Title="Report Manager" Height="730" Width="1170">
 
     <Window.CommandBindings>
         <CommandBinding Command="local:MainWindow.CustomRoutedCommand" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"/>
@@ -20,8 +20,26 @@
     </Window.InputBindings>
     <Grid>
         <Grid x:Name="titlebar" Height="50" Background="#ebebeb" VerticalAlignment="Top">
-
-            <TextBox x:Name="TbxSearch" UseLayoutRounding="True" LostFocus="TbxSearch_LostFocus" x:FieldModifier="public" Style="{DynamicResource SearchTextBox}" MinWidth="400" MaxWidth="800" TextChanged="TbxSearch_TextChanged" Width="400" VerticalContentAlignment="Center" WindowChrome.IsHitTestVisibleInChrome="True" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Margin="0 7.5 0 0" Tag="Pesquisar (Ctrl+P)"/>
+            
+            <Button x:Name="MenuButton"   
+                UseLayoutRounding="True"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Width="40"
+                WindowChrome.IsHitTestVisibleInChrome="True" 
+                Height="40"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe MDL2 Assets" 
+                FontSize="20"
+                Content="&#xe700;"
+                Margin="10 10 0 0"
+                Template="{DynamicResource ChromeButton}"
+                KeyboardNavigation.IsTabStop="False" Cursor="Hand"
+                Click="MenuButton_Click">
+                
+            </Button>
+            <TextBox x:Name="TbxSearch" GotFocus="TbxSearch_GotFocus" UseLayoutRounding="True" Focusable="True" LostFocus="TbxSearch_LostFocus" x:FieldModifier="public" Style="{DynamicResource SearchTextBox}" MinWidth="400" MaxWidth="800" TextChanged="TbxSearch_TextChanged" Width="400" VerticalContentAlignment="Center" WindowChrome.IsHitTestVisibleInChrome="True" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Margin="0 7.5 0 0" Tag="{DynamicResource GeneralSearchPlaceHolder}"/>
   
             <Button x:Name="BtnConfig"   
                 UseLayoutRounding="True"
@@ -122,12 +140,11 @@
             </Button>
         </Grid>
         <Label x:Name="Warn" Content="{DynamicResource GeneralSearchWarn}" Foreground="Red" Visibility="Collapsed" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50"/>
-        <Grid x:Name="Menu" Width="250" HorizontalAlignment="Left" Background="#ebebeb">
+        <Grid x:Name="Menu" Width="250" HorizontalAlignment="Left" Background="#ebebeb" Margin="0 50 0 0">
             <StackPanel Margin="0 200 0 0">
-                <RadioButton x:Name="Sonical" Style="{DynamicResource MenuToggleButton}" Unchecked="Sonical_Unchecked" Checked="Sonical_Checked" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="SONICAL SN G6" Cursor="Hand"/>
-                <RadioButton x:Name="ut" Style="{DynamicResource MenuToggleButton}" Unchecked="RadioButton_Unchecked" Checked="RadioButton_Checked" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="UT-G250"/>
-                <RadioButton x:Name="um" Style="{DynamicResource MenuToggleButton}" Unchecked="RadioButton_Unchecked_1" Checked="RadioButton_Checked_1" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="UM4000"/>
-                <RadioButton Style="{DynamicResource MenuToggleButton}" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="Controle de Produção"/>
+                <RadioButton x:Name="Sonical" Style="{DynamicResource MenuToggleButton}" Unchecked="Sonical_Unchecked" Checked="Sonical_Checked" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName1}" />
+                <RadioButton x:Name="ut" Style="{DynamicResource MenuToggleButton}" Unchecked="RadioButton_Unchecked" Checked="RadioButton_Checked" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName2}"/>
+                <RadioButton x:Name="um" Style="{DynamicResource MenuToggleButton}" Unchecked="RadioButton_Unchecked_1" Checked="RadioButton_Checked_1" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName3}"/>
             </StackPanel>
         </Grid>
         <Grid x:Name="grid1" Margin="250 45 0 0">

@@ -1,26 +1,9 @@
 ﻿using ReportManager.ViewModels.UserControls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Odbc;
-using System.Globalization;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace ReportManager
 {
@@ -64,7 +47,53 @@ namespace ReportManager
             {
                 BtnRestore.Visibility = Visibility.Collapsed;
                 BtnMaximize.Visibility = Visibility.Visible;
-            }       
+            }
+            
+            //MenuAnimation
+            if (Width < 1170)
+            {
+                Animations.AnimateMenuWidth(Menu, 60, false);
+                Sonical.Width = 40;
+                ut.Width = 40;
+                um.Width = 40;
+
+                Sonical.Content = FindResource("MenuShortName1");
+                ut.Content = FindResource("MenuShortName2");
+                um.Content = FindResource("MenuShortName3");
+
+                Sonical.HorizontalContentAlignment = HorizontalAlignment.Center;
+                ut.HorizontalContentAlignment = HorizontalAlignment.Center;
+                um.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+                Sonical.Padding = new Thickness(0, 0, 0, 0);
+                um.Padding = new Thickness(0, 0, 0, 0);
+                ut.Padding = new Thickness(0, 0, 0, 0);
+
+                Animations.AnimateMargin(grid1, 60);
+                //grid1.Margin = new Thickness(80, 45, 0, 0);
+
+            }
+            else //if (Menu.Width == 60)
+            {
+                Animations.AnimateMenuWidth(Menu, 250, false);
+                Sonical.Width = 230;
+                ut.Width = 230;
+                um.Width = 230;
+                Sonical.Content = FindResource("MenuName1");
+                ut.Content = FindResource("MenuName2");
+                um.Content = FindResource("MenuName3");
+
+                Sonical.HorizontalContentAlignment = HorizontalAlignment.Left;
+                ut.HorizontalContentAlignment = HorizontalAlignment.Left;
+                um.HorizontalContentAlignment = HorizontalAlignment.Left;
+
+                Sonical.Padding = new Thickness(10, 0, 0, 0);
+                um.Padding = new Thickness(10, 0, 0, 0);
+                ut.Padding = new Thickness(10, 0, 0, 0);
+
+                Animations.AnimateMargin(grid1, 250);
+                
+            }
             
         }
 
@@ -219,20 +248,77 @@ namespace ReportManager
         private void TbxSearch_LostFocus(object sender, RoutedEventArgs e)
         {
             Warn.Visibility = Visibility.Collapsed;
+            TbxSearch.Tag = FindResource("GeneralSearchPlaceHolder");
         }
 
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            
 
-            Keyboard.Focus(TbxSearch);
-            TbxSearch.Tag = "Procure um número de série..";
+
+            TbxSearch.Focus();
+            TbxSearch.Select(0, 0);
+            TbxSearch.Tag = Convert.ToString(FindResource("GeneralSearchPlaceHolder2"));
             
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("teste");
+        }
+
+        private void TbxSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TbxSearch.Tag = Convert.ToString(FindResource("GeneralSearchPlaceHolder2"));
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Menu.Width == 250)
+            {
+                Animations.AnimateMenuWidth(Menu, 60, false);
+                Sonical.Width = 40;
+                ut.Width = 40;
+                um.Width = 40;
+
+                Sonical.Content = FindResource("MenuShortName1");
+                ut.Content = FindResource("MenuShortName2");
+                um.Content = FindResource("MenuShortName3");
+
+                Sonical.HorizontalContentAlignment = HorizontalAlignment.Center;
+                ut.HorizontalContentAlignment = HorizontalAlignment.Center;
+                um.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+                Sonical.Padding = new Thickness(0, 0, 0, 0);
+                um.Padding = new Thickness(0, 0, 0, 0);
+                ut.Padding = new Thickness(0, 0, 0, 0);
+
+                Animations.AnimateMargin(grid1, 60);
+            }
+            else if (Width < 1170)
+            {
+
+            }
+            else
+            {
+                Animations.AnimateMenuWidth(Menu, 250, false);
+                Sonical.Width = 230;
+                ut.Width = 230;
+                um.Width = 230;
+                Sonical.Content = FindResource("MenuName1");
+                ut.Content = FindResource("MenuName2");
+                um.Content = FindResource("MenuName3");
+
+                Sonical.HorizontalContentAlignment = HorizontalAlignment.Left;
+                ut.HorizontalContentAlignment = HorizontalAlignment.Left;
+                um.HorizontalContentAlignment = HorizontalAlignment.Left;
+
+                Sonical.Padding = new Thickness(10, 0, 0, 0);
+                um.Padding = new Thickness(10, 0, 0, 0);
+                ut.Padding = new Thickness(10, 0, 0, 0);
+
+                Animations.AnimateMargin(grid1, 250);
+            }
+            
         }
     }
 }

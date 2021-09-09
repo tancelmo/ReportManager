@@ -5,6 +5,8 @@
     <system:String x:Key="InitSN">N de Série Inicial</system:String>
     <system:String x:Key="FinalSN">N de Série Final</system:String>
     <system:String x:Key="WarnFilter">Erro</system:String>
+    <system:String x:Key="GeneralSearchPlaceHolder">Pesquisar (Ctrl+P)</system:String>
+    <system:String x:Key="GeneralSearchPlaceHolder2">Digite um número de série</system:String>
     <TextBlock x:Key="DateFilter" Text="Selecionar data"/>
     <TextBlock x:Key="DateFilterFrom" Text="From"/>
     <TextBlock x:Key="DateFilterTo" Text="To"/>
@@ -12,7 +14,12 @@
     <TextBlock x:Key="SnFilterTo" Text="To"/>
     <TextBlock x:Key="SnFilter" Text="Selecionar Número de Série"/>
     <TextBlock x:Key="GeneralSearchWarn" Text="Não é possível usar a pesquisa geral quando um filtro está selecionado!!!"/>
-    <TextBlock x:Key="GeneralSearchPlaceHolder" Text="Pesquisar (Ctrl+P)"/>
     <TextBlock x:Key="Search" Text="P"/>
+    <TextBlock x:Key="MenuName1" Text="SONICAL SN G6"/>
+    <TextBlock x:Key="MenuName2" Text="UT-G250"/>
+    <TextBlock x:Key="MenuName3" Text="UM4000"/>
+    <TextBlock x:Key="MenuShortName1" Text="SN"/>
+    <TextBlock x:Key="MenuShortName2" Text="UT"/>
+    <TextBlock x:Key="MenuShortName3" Text="UM"/>
 
 </ResourceDictionary>

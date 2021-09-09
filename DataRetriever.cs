@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Odbc;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Markup;
 
 namespace ReportManager
 {
@@ -54,11 +48,11 @@ namespace ReportManager
         {
             IniFile readIni = new IniFile("config.ini");
             OdbcConnection connection = new OdbcConnection();
-            connection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb)}; Dbq="+ readIni.Read("DbUM","Database");
+            connection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb)}; Dbq=" + readIni.Read("DbUM", "Database");
 
 
             connection.Open();
-            string query = "SELECT Calibraciones.IdCalibración, Calibraciones.FechaCalibración,  Calibraciones.NúmeroSerie, Calibraciones.Operador, Contadores.MarcaContador, Contadores.ModeloContador, Contadores.Diámetro, Contadores.PresiónNominal, Calibraciones.TotalizadorIni, Calibraciones.TotalizadorFin, Calibraciones.IdCliente from Calibraciones inner join Contadores on Calibraciones.NúmeroSerie=Contadores.NúmeroSerie";// UNION ALL SELECT SerialNumber from Meters";// UNION ALL SELECT Operator, Program from Calibrations UNION ALL SELECT MeterData1, MeterData2, MeterData3, MeterData4, MeterData5, MeterData6, MeterData7, MeterData8, MeterData9, MeterData10 FROM Meters";
+            string query = "SELECT Calibraciones.IdCalibración, Calibraciones.FechaCalibración,  Calibraciones.NúmeroSerie, Calibraciones.Operador, Contadores.MarcaContador, Contadores.ModeloContador, Contadores.Diámetro, Contadores.TamañoContador, Contadores.PresiónNominal, Calibraciones.TotalizadorIni, Calibraciones.TotalizadorFin, Calibraciones.IdCliente from Calibraciones inner join Contadores on Calibraciones.NúmeroSerie=Contadores.NúmeroSerie";// UNION ALL SELECT SerialNumber from Meters";// UNION ALL SELECT Operator, Program from Calibrations UNION ALL SELECT MeterData1, MeterData2, MeterData3, MeterData4, MeterData5, MeterData6, MeterData7, MeterData8, MeterData9, MeterData10 FROM Meters";
             OdbcCommand command = new OdbcCommand(query, connection);
             command.ExecuteNonQuery();
             OdbcDataAdapter adapter = new OdbcDataAdapter(command);
@@ -75,7 +69,7 @@ namespace ReportManager
         {
             IniFile readIni = new IniFile("config.ini");
             OdbcConnection connection = new OdbcConnection();
-            connection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb)}; Dbq="+ readIni.Read("DbSN","Database");
+            connection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb)}; Dbq=" + readIni.Read("DbSN", "Database");
 
 
             connection.Open();

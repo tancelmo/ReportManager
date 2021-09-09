@@ -61,6 +61,7 @@
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -79,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animations.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="DataRetriever.cs" />
     <Compile Include="ViewModels\UserControls\UCData1.xaml.cs">
@@ -91,6 +93,10 @@
       <DependentUpon>UCData3.xaml</DependentUpon>
     </Compile>
     <Page Include="Assets\Language\pt-BR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Themes\ComboBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
