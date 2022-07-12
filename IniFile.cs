@@ -47,29 +47,6 @@ namespace ReportManager
         {
             return Read(Key, Section).Length > 0;
         }
-        // Create a file if not exist
-        public void Create()
-        {
-            using (StreamWriter writer = new StreamWriter("config2.ini", append: true))
-            {
-            writer.Write(
-@"[General]
-Language=pt-br
-Theme=Light
-MaxArguments=44
-MarkUP=##
-ReportExtension=.xls
-
-[Database]
-DbUT=Results.mdb
-DbUM=UM.mdb
-DbSN=Sonical/Results.mdb
-
-[DirectoryTemplates]
-TemplateFolder1=ReportTemplates\UT
-TemplateFolder2=ReportTemplates\UM
-TemplateFolder3=ReportTemplates\SN");
-            }
-        }
+        
     }
 }

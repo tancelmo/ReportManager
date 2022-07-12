@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -22,7 +23,8 @@ namespace ReportManager.ViewModels
     /// </summary>
     public partial class IniLoading : Window
     {
-        public MainWindow mainWindow = new MainWindow();
+        
+        
         DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
         public IniLoading()
         {
@@ -31,9 +33,11 @@ namespace ReportManager.ViewModels
             dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Start();
             InitializeComponent();
+            StartUp.CheckFiles();
             StartUp.Language(this);
-            StartUp.Theme(this);
+            //StartUp.Theme(this);
             StartUp.TestConnection();
+            
             Storyboard s = (Storyboard)TryFindResource("mystoryboard");
             s.Begin();
             PbLoading.Value = 100;
@@ -46,9 +50,11 @@ namespace ReportManager.ViewModels
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            this.Close();
+            MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             dispatcherTimer.Stop();
+            this.Close();
+            
             
         }
 

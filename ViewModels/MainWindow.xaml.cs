@@ -37,9 +37,7 @@ namespace ReportManager
             StartUp.Theme(this);
             StartUp.Language(this);
             InitializeComponent();
-            IniFile iniFile = new IniFile();
-            //iniFile.Create();
-
+            
 
             
             StartUp.ThemeSwitch(DarkModeToggleButton);

@@ -2,6 +2,7 @@
 using System;
 using System.Data.Odbc;
 using System.Globalization;
+using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -129,6 +130,53 @@ namespace ReportManager
             {
                 toggleButton.IsChecked = false;
 
+            }
+        }
+
+        public static void CheckFiles()
+        {
+            
+
+            if (!File.Exists("config.ini"))
+            {
+
+                MessageBoxResult result = MessageBox.Show("Config File Not Found, do ou want create with std configs?", "File not Found", MessageBoxButton.YesNoCancel);
+                if (result == MessageBoxResult.Yes)
+                {
+                    CreateIniFile();
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    Application.Current.Shutdown();
+                }
+                else
+                {
+                    Application.Current.Shutdown();
+                }
+            }
+        }
+
+        // Create a file if not exist
+        internal static void CreateIniFile()
+        {
+            using (StreamWriter writer = new StreamWriter("config.ini", append: true))
+            {
+                writer.Write(
+    @"[General]
+Language=pt-br
+Theme=Light
+MarkUP=##
+ReportExtension=.xls
+
+[Database]
+DbUT=Results.mdb
+DbUM=UM.mdb
+DbSN=Sonical/Results.mdb
+
+[DirectoryTemplates]
+TemplateFolder1=ReportTemplates\UT
+TemplateFolder2=ReportTemplates\UM
+TemplateFolder3=ReportTemplates\SN");
             }
         }
 
