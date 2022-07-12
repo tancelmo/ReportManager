@@ -17,7 +17,7 @@ namespace ReportManager
             //  Settings
             //---------------------------------------------------
 
-            TimeSpan duration = TimeSpan.FromSeconds(0.2);
+            TimeSpan duration = TimeSpan.FromSeconds(.2);
             double newWidth = isRelative ? grid.Width - width : width;
 
             _ = grid.Dispatcher.BeginInvoke(new Action(() =>
@@ -56,9 +56,9 @@ namespace ReportManager
             
             Storyboard.SetTargetProperty(ta, new PropertyPath(Grid.MarginProperty));
             var actualMargin = grid.Margin.Left;
-            ta.From = new Thickness(actualMargin, 45, 0, 0);
-            ta.To = new Thickness(newMargin, 45, 0, 0);
-            ta.Duration = new Duration(TimeSpan.FromSeconds(0.2));
+            ta.From = new Thickness(actualMargin, 50, 0, 0);
+            ta.To = new Thickness(newMargin, 50, 0, 0);
+            ta.Duration = new Duration(TimeSpan.FromSeconds(.2));
 
             sb.Children.Add(ta);
             sb.Begin(grid);

@@ -1,25 +1,156 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:local="clr-namespace:ReportManager">
-    <system:String x:Key="Tittle">pt-BR</system:String>
+                    xmlns:local="clr-namespace:ReportManager"
+                    xmlns:local2="clr-namespace:ReportManager">
+    <local:Globals x:Key="GlobalVariables"/>
+
+    <system:String x:Key="Tittle">Report Manager</system:String>
     <system:String x:Key="InitSN">N de Série Inicial</system:String>
     <system:String x:Key="FinalSN">N de Série Final</system:String>
     <system:String x:Key="WarnFilter">Erro</system:String>
     <system:String x:Key="GeneralSearchPlaceHolder">Pesquisar (Ctrl+P)</system:String>
     <system:String x:Key="GeneralSearchPlaceHolder2">Digite um número de série</system:String>
+    <system:String x:Key="CaptionBtnMin">Minimizar</system:String>
+    <system:String x:Key="CaptionBtnMax">Maximizar</system:String>
+    <system:String x:Key="CaptionBtnRes">Restaurar abaixo</system:String>
+    <system:String x:Key="CaptionBtnCls">Fechar</system:String>
+    <system:String x:Key="CaptionBtnCfg">Configurações</system:String>
+    <system:String x:Key="CaptionBtnClear">Limpar</system:String>
+    <system:String x:Key="FilterAlertCaption">Alerta de filtro</system:String>
+    <system:String x:Key="FilterAlert">A quantidade de dados a selecionar pode ser alta e derivar um tempo considerável se não usar um filtro de data ou Numero de Série, deseja continuar?</system:String>
+    <TextBlock x:Key="MoreCfg">
+        <Label Content="Configurações" FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13"/>
+    </TextBlock>
+    <system:String x:Key="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut augue tincidunt, cursus ipsum id, consectetur mauris. Quisque sit amet sem massa. Phasellus fermentum varius purus et venenatis. Morbi et sem ut tortor bibendum ornare. Sed faucibus id ligula ac pulvinar. Duis ligula velit, maximus a erat nec, pretium scelerisque mauris. Nam facilisis felis vel tellus varius, sit amet commodo dui ullamcorper. Maecenas at nulla et lacus aliquet egestas. Praesent commodo, enim nec tristique accumsan, orci ante volutpat odio, ut aliquet lorem nisi eu nibh. Aliquam gravida dictum metus vel rutrum. Duis scelerisque blandit metus quis dignissim. Mauris at molestie felis. In odio ligula, facilisis eget lorem vel, bibendum blandit massa. Nam maximus rhoncus dolor vel bibendum. Donec nec libero tempor, lobortis ante sed, luctus quam. Fusce sagittis consectetur enim et porttitor.</system:String>
+    <!--#region SN Datagrid Headers-->
+    
+    <system:String x:Key="SNHeader0">ID</system:String>
+    <system:String x:Key="SNHeader1">Data</system:String>
+    <system:String x:Key="SNHeader2">Número de Série</system:String>
+    <system:String x:Key="SNHeader3">Operador</system:String>
+    <system:String x:Key="SNHeader4">Programa</system:String>
+    <system:String x:Key="SNHeader5">Designação G</system:String>
+    <system:String x:Key="SNHeader6">Cliente</system:String>
+    <system:String x:Key="SNHeader7">Fabricante</system:String>
+
+    <!--#endregion-->
+
+    <!--#region UT Datagrid Headers-->
+
+    <system:String x:Key="UTHeader0">ID</system:String>
+    <system:String x:Key="UTHeader1">Data</system:String>
+    <system:String x:Key="UTHeader2">Número de Série</system:String>
+    <system:String x:Key="UTHeader3">Operador</system:String>
+    <system:String x:Key="UTHeader4">Programa</system:String>
+    <system:String x:Key="UTHeader5">Tipo</system:String>
+    <system:String x:Key="UTHeader6">Fabricante</system:String>
+    <system:String x:Key="UTHeader7">Modelo</system:String>
+    <system:String x:Key="UTHeader8">Ano</system:String>
+    <system:String x:Key="UTHeader9">DN</system:String>
+    <system:String x:Key="UTHeader10">Pressão Máxima</system:String>
+    <system:String x:Key="UTHeader11">Leitura Inicial</system:String>
+    <system:String x:Key="UTHeader12">Leitura Final</system:String>
+    <system:String x:Key="UTHeader13">Emissor</system:String>
+    <system:String x:Key="UTHeader14">Cliente</system:String>
+
+    <!--#endregion-->
+
+    <!--#region UM Datagrid Headers-->
+
+    <system:String x:Key="UMHeader0">ID</system:String>
+    <system:String x:Key="UMHeader1">Data</system:String>
+    <system:String x:Key="UMHeader2">Número de Série</system:String>
+    <system:String x:Key="UMHeader3">Operador</system:String>
+    <system:String x:Key="UMHeader4">Fabricante</system:String>
+    <system:String x:Key="UMHeader5">Modelo</system:String>
+    <system:String x:Key="UMHeader6">DN</system:String>
+    <system:String x:Key="UMHeader7">Designação G</system:String>
+    <system:String x:Key="UMHeader8">Pressão Máxima</system:String>
+    <system:String x:Key="UMHeader9">Leitura Inicial</system:String>
+    <system:String x:Key="UMHeader10">Leitura Final</system:String>
+    <system:String x:Key="UMHeader11">Qmax</system:String>
+    <system:String x:Key="UMHeader12">Qmin</system:String>
+    <system:String x:Key="UMHeader13">Cliente</system:String>
+
+    <!--#endregion-->
+
+
+    <TextBlock x:Key="ConfigHeader" Text="Configurações"/>
     <TextBlock x:Key="DateFilter" Text="Selecionar data"/>
-    <TextBlock x:Key="DateFilterFrom" Text="From"/>
-    <TextBlock x:Key="DateFilterTo" Text="To"/>
-    <TextBlock x:Key="SnFilterFrom" Text="From"/>
-    <TextBlock x:Key="SnFilterTo" Text="To"/>
+    <TextBlock x:Key="DateFilterFrom" Text="De"/>
+    <TextBlock x:Key="DateFilterTo" Text="Á"/>
+    <TextBlock x:Key="SnFilterFrom" Text="De"/>
+    <TextBlock x:Key="SnFilterTo" Text="Á"/>
     <TextBlock x:Key="SnFilter" Text="Selecionar Número de Série"/>
-    <TextBlock x:Key="GeneralSearchWarn" Text="Não é possível usar a pesquisa geral quando um filtro está selecionado!!!"/>
     <TextBlock x:Key="Search" Text="P"/>
-    <TextBlock x:Key="MenuName1" Text="SONICAL SN G6"/>
-    <TextBlock x:Key="MenuName2" Text="UT-G250"/>
-    <TextBlock x:Key="MenuName3" Text="UM4000"/>
+    <system:String x:Key="MenuName1">SONICAL SN G6</system:String>
+    <system:String x:Key="MenuName2">UT-G250</system:String>
+    <system:String x:Key="MenuName3">UM4000</system:String>
+    <system:String x:Key="MenuConfig">Configurações</system:String>
+    <system:String x:Key="CurrentData">DADOS ATUAIS - </system:String>
+    <TextBlock x:Key="ConnectionStatus1" Text="ONLINE"/>
+    <TextBlock x:Key="ConnectionStatus2" Text="ONLINE"/>
+    <TextBlock x:Key="ConnectionStatus3" Text="ONLINE"/>
     <TextBlock x:Key="MenuShortName1" Text="SN"/>
     <TextBlock x:Key="MenuShortName2" Text="UT"/>
     <TextBlock x:Key="MenuShortName3" Text="UM"/>
+    <TextBlock x:Key="ConnectionInfoCaption" Text="Status da conexão"/>
+    <TextBlock x:Key="FullConnectionInfoCaption" Text="Status da conexão"/>
+    <TextBlock x:Key="CapsLockWarnLabel" Text="Warning: CapsLock is on"/>
+    <TextBlock x:Key="UserName" Text="Taliston A. da Silva"/>
+    <TextBlock x:Key="UserLevel" Text="Operador"/>
+    <TextBlock x:Key="NoData" Text="NO DATA SELECTED"/>
+    <TextBlock x:Key="NoData1" Text="NO DATA SELECTED"/>
+    
+    <TextBlock x:Key="TooltipUser">
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="15" Content="Taliston A. da Silva"/>
+        <LineBreak/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontStyle="Italic" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" Content="Operador"/>
+    </TextBlock>
+
+
+    <!--#region Status Info-->
+    <TextBlock x:Key="ConnectionInfo">
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontStyle="Italic"  FontSize="15" Content="{DynamicResource ConnectionInfoCaption}"/>
+        <LineBreak/>
+        <Label Content="{DynamicResource ConnectionStatus1}" Background="{DynamicResource StatusIndicator1}" Foreground="{DynamicResource MaterialDesignPaper}" Style="{DynamicResource CustomLabelTitle}" FontStyle="Italic" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="10"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{StaticResource MenuName1}"/>
+        <LineBreak/>
+        <Label Content="{DynamicResource ConnectionStatus2}" Background="{DynamicResource StatusIndicator2}" Foreground="{DynamicResource MaterialDesignPaper}" Style="{DynamicResource CustomLabelTitle}" FontStyle="Italic" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="10"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{StaticResource MenuName2}"/>
+        <LineBreak/>
+        <Label Content="{DynamicResource ConnectionStatus3}" Background="{DynamicResource StatusIndicator3}" Foreground="{DynamicResource MaterialDesignPaper}" Style="{DynamicResource CustomLabelTitle}" FontStyle="Italic" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="10"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{StaticResource MenuName3}"/>
+    </TextBlock>
+    <!--#endregion-->
+    <!--#region FullConnectInfo-->
+    <TextBlock x:Key="FullConnectionInfo">
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontStyle="Italic"  FontSize="15" Content="{DynamicResource FullConnectionInfoCaption}"/>
+        <LineBreak/>
+        <Label Content="{DynamicResource ConnectionStatus1}" Background="{DynamicResource StatusIndicator1}" Foreground="{DynamicResource MaterialDesignPaper}" Style="{DynamicResource CustomLabelTitle}" FontStyle="Italic" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="10"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{StaticResource MenuName1}"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="-"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{Binding Source={StaticResource GlobalVariables}, Path=DataAdressSN}"/>
+        <LineBreak/>
+        <Label Content="{DynamicResource ConnectionStatus2}" Background="{DynamicResource StatusIndicator2}" Foreground="{DynamicResource MaterialDesignPaper}" Style="{DynamicResource CustomLabelTitle}" FontStyle="Italic" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="10"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{StaticResource MenuName2}"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="-"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{Binding Source={StaticResource GlobalVariables}, Path=DataAdressUT}"/>
+        <LineBreak/>
+        <Label Content="{DynamicResource ConnectionStatus3}" Background="{DynamicResource StatusIndicator3}" Foreground="{DynamicResource MaterialDesignPaper}" Style="{DynamicResource CustomLabelTitle}" FontStyle="Italic" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="10"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{StaticResource MenuName3}"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="-"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignBody}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Content="{Binding Source={StaticResource GlobalVariables}, Path=DataAdressUM}"/>    
+    </TextBlock>
+    <!--#endregion-->
+
+    <!--#region Status Info-->
+    <TextBlock x:Key="CapsLockWarn">
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons" FontSize="20" Content="&#xe7ba;"/>
+        <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontStyle="Italic"  FontSize="15" Content="{DynamicResource CapsLockWarnLabel}"/>
+    </TextBlock>
+    <!--#endregion-->
+
+
 
 </ResourceDictionary>

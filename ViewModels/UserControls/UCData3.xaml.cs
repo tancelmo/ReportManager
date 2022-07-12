@@ -26,34 +26,37 @@ namespace ReportManager.ViewModels.UserControls
         public UCData3()
         {
             InitializeComponent();
-            DataRetriever.Data3(datagrid1, data);
-            Common.SetLanguage(this);
+            DataRetriever.Data3(datagridSN, data);
+            Common.TemplatesSelector("TemplateFolder3", CbxTemplates);
         }
 
-        private void datagrid1_Loaded(object sender, RoutedEventArgs e)
+        private void datagridSN_Loaded(object sender, RoutedEventArgs e)
         {
-            datagrid1.Items.SortDescriptions.Add(new SortDescription("CalibrationId", ListSortDirection.Descending));
+            datagridSN.Items.SortDescriptions.Add(new SortDescription("CalibrationId", ListSortDirection.Descending));
+            
             Mouse.OverrideCursor = null;
+            
+            
         }
 
 
         private void DataFilter_Checked(object sender, RoutedEventArgs e)
         {
 
-            Common.FilterRangeDate(data, datagrid1, Date1, Date2, "CalibrationDate", SnFilter, TbxInit, TbxFinal, "SerialNumber");
+            Common.FilterRangeDate(data, datagridSN, Date1, Date2, "CalibrationDate", SnFilter, TbxInit, TbxFinal, "SerialNumber");
         }
 
         private void DataFilter_Unchecked(object sender, RoutedEventArgs e)
         {
             if (SnFilter.IsChecked == true)
             {
-                Common.FilterRangeSn(data, datagrid1, TbxInit, TbxFinal, "SerialNumber", DataFilter, Date1, Date2, "CalibrationDate");
+                Common.FilterRangeSn(data, datagridSN, TbxInit, TbxFinal, "SerialNumber", DataFilter, Date1, Date2, "CalibrationDate");
             }
             else
             {
                 data.DefaultView.RowFilter = string.Empty;
-                datagrid1.Items.SortDescriptions.Clear();
-                datagrid1.Items.SortDescriptions.Add(new SortDescription("CalibrationId", ListSortDirection.Descending));
+                datagridSN.Items.SortDescriptions.Clear();
+                datagridSN.Items.SortDescriptions.Add(new SortDescription("CalibrationId", ListSortDirection.Descending));
             }
 
         }
@@ -62,7 +65,7 @@ namespace ReportManager.ViewModels.UserControls
         {
             if (DataFilter.IsChecked == true)
             {
-                Common.FilterRangeDate(data, datagrid1, Date1, Date2, "CalibrationDate", SnFilter, TbxInit, TbxFinal, "SerialNumber");
+                Common.FilterRangeDate(data, datagridSN, Date1, Date2, "CalibrationDate", SnFilter, TbxInit, TbxFinal, "SerialNumber");
             }
         }
 
@@ -71,26 +74,26 @@ namespace ReportManager.ViewModels.UserControls
         {
             if (DataFilter.IsChecked == true)
             {
-                Common.FilterRangeDate(data, datagrid1, Date1, Date2, "CalibrationDate", SnFilter, TbxInit, TbxFinal, "SerialNumber");
+                Common.FilterRangeDate(data, datagridSN, Date1, Date2, "CalibrationDate", SnFilter, TbxInit, TbxFinal, "SerialNumber");
             }
         }
 
         private void SnFilter_Checked(object sender, RoutedEventArgs e)
         {
-            Common.FilterRangeSn(data, datagrid1, TbxInit, TbxFinal, "SerialNumber", DataFilter, Date1, Date2, "CalibrationDate");
+            Common.FilterRangeSn(data, datagridSN, TbxInit, TbxFinal, "SerialNumber", DataFilter, Date1, Date2, "CalibrationDate");
         }
 
         private void SnFilter_Unchecked(object sender, RoutedEventArgs e)
         {
             if (DataFilter.IsChecked == true)
             {
-                Common.FilterRangeDate(data, datagrid1, Date1, Date2, "CalibrationDate", SnFilter, TbxInit, TbxFinal, "SerialNumber");
+                Common.FilterRangeDate(data, datagridSN, Date1, Date2, "CalibrationDate", SnFilter, TbxInit, TbxFinal, "SerialNumber");
             }
             else
             {
                 data.DefaultView.RowFilter = string.Empty;
-                datagrid1.Items.SortDescriptions.Clear();
-                datagrid1.Items.SortDescriptions.Add(new SortDescription("CalibrationId", ListSortDirection.Descending));
+                datagridSN.Items.SortDescriptions.Clear();
+                datagridSN.Items.SortDescriptions.Add(new SortDescription("CalibrationId", ListSortDirection.Descending));
             }
 
         }
@@ -99,7 +102,7 @@ namespace ReportManager.ViewModels.UserControls
         {
             if (SnFilter.IsChecked == true)
             {
-                Common.FilterRangeSn(data, datagrid1, TbxInit, TbxFinal, "SerialNumber", DataFilter, Date1, Date2, "CalibrationDate");
+                Common.FilterRangeSn(data, datagridSN, TbxInit, TbxFinal, "SerialNumber", DataFilter, Date1, Date2, "CalibrationDate");
             }
         }
 
@@ -107,8 +110,42 @@ namespace ReportManager.ViewModels.UserControls
         {
             if (SnFilter.IsChecked == true)
             {
-                Common.FilterRangeSn(data, datagrid1, TbxInit, TbxFinal, "SerialNumber", DataFilter, Date1, Date2, "CalibrationDate");
+                Common.FilterRangeSn(data, datagridSN, TbxInit, TbxFinal, "SerialNumber", DataFilter, Date1, Date2, "CalibrationDate");
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (SnFilter.IsChecked == false & DataFilter.IsChecked == false)
+            {
+                if (MessageBox.Show(Convert.ToString(FindResource("FilterAlert")), Convert.ToString(FindResource("Tittle")), MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    //do no stuff
+                }
+                else
+                {
+                    //do yes stuff
+                    datagridSN.SelectAll();
+                }
+            }
+            else
+            {
+                datagridSN.SelectAll();
+            }
+            
+            
+        }
+
+        private void datagridSN_AutoGeneratedColumns(object sender, EventArgs e)
+        {
+            Common.SNRename(datagridSN);
+        }
+
+        private void datagridSN_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            Count.Content = Common.CounterSelectedDatagrid(datagridSN, 8) + " Item(s) selecionado(s)";
+            
+            
         }
     }
 }

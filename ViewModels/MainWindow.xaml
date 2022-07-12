@@ -4,23 +4,65 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReportManager"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         SizeChanged="Window_SizeChanged"
         WindowStartupLocation="CenterScreen"
+        
         Style="{DynamicResource CustomWindowStyle}"
+        Background="{DynamicResource WindowColorBackground}"
         MinWidth="990"
         MinHeight="530"
-        Title="Report Manager" Height="730" Width="1170">
+        Title="{DynamicResource Tittle}" Height="730" Width="1170"
+        Loaded="Window_Loaded">
 
     <Window.CommandBindings>
-        <CommandBinding Command="local:MainWindow.CustomRoutedCommand" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="local:MainWindow.SearchToolbox" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed"/>
     </Window.CommandBindings>
     <Window.InputBindings >
-        <KeyBinding Modifiers="Ctrl" Key="P" Command="local:MainWindow.CustomRoutedCommand"/>
+        <KeyBinding Modifiers="Ctrl" Key="P" Command="local:MainWindow.SearchToolbox"/>
     </Window.InputBindings>
+    
     <Grid>
-        <Grid x:Name="titlebar" Height="50" Background="#ebebeb" VerticalAlignment="Top">
-            
+        
+        
+        
+        <Grid x:Name="titlebar" VerticalAlignment="Top" Cursor="Hand">
+            <Menu HorizontalAlignment="Left" FontSize="15" Margin="60 5 0 0" Width="auto" Height="30" Background="{DynamicResource WindowColorBackground}" WindowChrome.IsHitTestVisibleInChrome="True">
+                <MenuItem Height="30" Header="File">
+                    <MenuItem Height="30" Header="Opera"/>
+                    <MenuItem Height="30" Header="Config"/>
+                    <MenuItem Height="30" Header="_Edit">
+                        <MenuItem Command="ApplicationCommands.Copy"/>
+                        <MenuItem Command="ApplicationCommands.Cut"/>
+                        <MenuItem Command="ApplicationCommands.Paste">
+                            <MenuItem Height="30" Header="Opera"/>
+                            <MenuItem Height="30" Header="Config"/>
+                            <MenuItem Height="30" Header="_Edit">
+                                <MenuItem Command="ApplicationCommands.Copy"/>
+                                <MenuItem Command="ApplicationCommands.Cut"/>
+                                <MenuItem Command="ApplicationCommands.Paste">
+                                    <MenuItem Height="30" Header="Opera"/>
+                                    <MenuItem Height="30" Header="Config"/>
+                                    <MenuItem Height="30" Header="_Edit">
+                                        <MenuItem Command="ApplicationCommands.Copy"/>
+                                        <MenuItem Command="ApplicationCommands.Cut"/>
+                                        <MenuItem Command="ApplicationCommands.Paste"/>
+                                    </MenuItem>
+                                </MenuItem>
+                            </MenuItem>
+                        </MenuItem>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Height="30" Header="Opera"/>
+                <MenuItem Height="30" Header="Config"/>
+                <MenuItem Height="30" Header="_Edit">
+                    <MenuItem Command="ApplicationCommands.Copy"/>
+                    <MenuItem Command="ApplicationCommands.Cut"/>
+                    <MenuItem Command="ApplicationCommands.Paste"/>
+                </MenuItem>
+            </Menu>
+            <Label x:FieldModifier="public" MouseDoubleClick="LabelDb_MouseDoubleClick" x:Name="LabelDb" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Arrow" Content="{DynamicResource NoData}" Style="{DynamicResource CustomLabelTitle}" Width="auto" Height="30" Padding="10 0 10 0" HorizontalAlignment="Right" Margin="0 0 180 0"/>
             <Button x:Name="MenuButton"   
                 UseLayoutRounding="True"
                 Background="Transparent"
@@ -28,39 +70,80 @@
                 Width="40"
                 WindowChrome.IsHitTestVisibleInChrome="True" 
                 Height="40"
+                Padding="0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe MDL2 Assets" 
-                FontSize="20"
+                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons" 
+                FontSize="15"
                 Content="&#xe700;"
                 Margin="10 10 0 0"
                 Template="{DynamicResource ChromeButton}"
                 KeyboardNavigation.IsTabStop="False" Cursor="Hand"
-                Click="MenuButton_Click">
+                Click="MenuButton_Click"
+                    Foreground="{DynamicResource MaterialDesignBody}">
                 
             </Button>
-            <TextBox x:Name="TbxSearch" GotFocus="TbxSearch_GotFocus" UseLayoutRounding="True" Focusable="True" LostFocus="TbxSearch_LostFocus" x:FieldModifier="public" Style="{DynamicResource SearchTextBox}" MinWidth="400" MaxWidth="800" TextChanged="TbxSearch_TextChanged" Width="400" VerticalContentAlignment="Center" WindowChrome.IsHitTestVisibleInChrome="True" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Margin="0 7.5 0 0" Tag="{DynamicResource GeneralSearchPlaceHolder}"/>
-  
-            <Button x:Name="BtnConfig"   
-                UseLayoutRounding="True"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Width="30"
-                WindowChrome.IsHitTestVisibleInChrome="True" 
-                Height="30"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe MDL2 Assets" 
-                
-                Content="&#xE712;"
-                Margin="0, 10, 135, 0"
-                Template="{DynamicResource ChromeButton}"
-                KeyboardNavigation.IsTabStop="False" Cursor="Hand">
+            <Border CornerRadius="3" BorderThickness="1" UseLayoutRounding="True" Width="400" BorderBrush="{DynamicResource MaterialDesignPaper}" SnapsToDevicePixels="True" VerticalAlignment="Top" Height="36" Margin="0 7.5 0 0">
+                <TextBox x:Name="TbxSearch" ToolTip="Pesquisa geral a partir do núme de série" MouseLeave="TbxSearch_MouseLeave" MouseEnter="TbxSearch_MouseEnter" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" Padding="10 0 0 0" SnapsToDevicePixels="True" LostKeyboardFocus="TbxSearch_LostKeyboardFocus" Background="{DynamicResource MaterialDesignPaper}" Foreground="{DynamicResource MaterialDesignBody}" GotFocus="TbxSearch_GotFocus" UseLayoutRounding="True" Focusable="True" materialDesign:HintAssist.Hint="{DynamicResource GeneralSearchPlaceHolder}" LostFocus="TbxSearch_LostFocus" x:FieldModifier="public" MinWidth="400" MaxWidth="800" TextChanged="TbxSearch_TextChanged" Width="400" VerticalContentAlignment="Center" WindowChrome.IsHitTestVisibleInChrome="True" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Cursor="IBeam"/>
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="1" Opacity=".2"/>
+                </Border.Effect>
+            </Border>
+            <Button x:Name="BtnClear" Foreground="{DynamicResource MaterialDesignBody}" Style="{StaticResource MaterialDesignPaperLightButton}" Padding="0" Margin="360 0 0 0" Visibility="Collapsed" WindowChrome.IsHitTestVisibleInChrome="True" FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons"  Width="20" Height="20" MinHeight="20" FontSize="8" Content="&#xE8BB;" Cursor="Hand" Click="BtnClear_Click">
                 <ToolTipService.ToolTip>
-                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="Configurações"/>
+                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="{DynamicResource CaptionBtnClear}"/>
                 </ToolTipService.ToolTip>
             </Button>
-            <Button x:Name="BtnMinimize"   
+            <materialDesign:PopupBox FontSize="15" Foreground="{DynamicResource MaterialDesignBody}"
+                                     ToolTip="{DynamicResource MoreCfg}"
+                    HorizontalAlignment="Right" Margin="0 0 140 0" Width="20" Height="20" WindowChrome.IsHitTestVisibleInChrome="True"
+                            DockPanel.Dock="Right"
+                            PlacementMode="BottomAndAlignRightEdges"
+                            StaysOpen="False" HorizontalContentAlignment="Center">
+                <materialDesign:PopupBox.ToggleContent>
+                    <materialDesign:PackIcon Kind="DotsHorizontal" 
+                                Foreground="{DynamicResource MaterialDesignBody}"                        />
+                </materialDesign:PopupBox.ToggleContent>
+                <StackPanel>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                                        Text="Light"
+                                        Margin="0 0 10 0"/>
+                        <ToggleButton
+                                        x:Name="DarkModeToggleButton"
+                                        Click="DarkModeToggleButton_Click"
+                                        Grid.Column="1"/>
+                        <TextBlock
+                                        Text="Dark"
+                                        Margin="10 0 0 0"
+                                        Grid.Column="2"/>
+
+                    </Grid>
+
+                    <Separator/>
+
+                    <Button
+                                    x:Name="Btn_Config"
+                                    Content="Configurações"
+                                    Click="Btn_Config_Click"/>
+
+                    <Button
+                                    Content="Sobre"
+                                    />
+
+
+                </StackPanel>
+            </materialDesign:PopupBox>
+            <Button x:Name="BtnMinimize"    Foreground="{DynamicResource MaterialDesignBody}"
                 UseLayoutRounding="True"
                 Background="Transparent"
                 BorderBrush="Transparent"
@@ -69,7 +152,7 @@
                 Height="50"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe MDL2 Assets" 
+                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons" 
                 FontSize="10"
                 Content="&#xE921;"
                 Margin="0,0,90,0"
@@ -77,10 +160,10 @@
                 Template="{DynamicResource ChromeButton}"
                 KeyboardNavigation.IsTabStop="False" Cursor="Hand">
                 <ToolTipService.ToolTip>
-                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="Minimizar"/>
+                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="{DynamicResource CaptionBtnMin}"/>
                 </ToolTipService.ToolTip>
             </Button>
-            <Button x:Name="BtnMaximize"
+            <Button x:Name="BtnMaximize" Foreground="{DynamicResource MaterialDesignBody}"
                 UseLayoutRounding="True"
                 Width="45"
                 Background="Transparent"
@@ -89,17 +172,18 @@
                 Height="50"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe MDL2 Assets"
+                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons"
                 FontSize="10"
                 Content="&#xE922;"
                 Template="{DynamicResource ChromeButton}"
                 Margin="0,0,45,0"
+                    MouseEnter="BtnMaximize_MouseEnter"
                 Click="BtnMaximize_Click" Cursor="Hand">
                 <ToolTipService.ToolTip>
-                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="Maximizar"/>
+                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="{DynamicResource CaptionBtnMax}"/>
                 </ToolTipService.ToolTip>
             </Button>
-            <Button x:Name="BtnRestore"
+            <Button x:Name="BtnRestore" Foreground="{DynamicResource MaterialDesignBody}"
                 Template="{DynamicResource ChromeButton}"
                 UseLayoutRounding="True"
                 Background="Transparent"
@@ -109,17 +193,17 @@
                 Height="50"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe MDL2 Assets"
+                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons"
                 FontSize="10"
                 Content="&#xE923;"
                 Margin="0,0,45,0"
                 Visibility="Collapsed"
                 Click="BtnRestore_Click">
                 <ToolTipService.ToolTip>
-                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="Restaurar abaixo"/>
+                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="{DynamicResource CaptionBtnRes}"/>
                 </ToolTipService.ToolTip>
             </Button>
-            <Button x:Name="BtnClose"
+            <Button x:Name="BtnClose" Foreground="{DynamicResource MaterialDesignBody}"
                 UseLayoutRounding="True"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
@@ -128,27 +212,85 @@
                 BorderBrush="Transparent"
                 Width="45"
                 WindowChrome.IsHitTestVisibleInChrome="True"                      
-                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe MDL2 Assets"
+                FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons"
                 FontSize="10"
                 Content="&#xE8BB;"
                 Click="BtnClose_Click"
                 Template="{DynamicResource CloseWindowButton}"
                 KeyboardNavigation.IsTabStop="False">
                 <ToolTipService.ToolTip>
-                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="Fechar"/>
+                    <TextBlock FontWeight="{x:Static SystemFonts.MessageFontWeight}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13" Text="{DynamicResource CaptionBtnCls}"/>
                 </ToolTipService.ToolTip>
             </Button>
         </Grid>
-        <Label x:Name="Warn" Content="{DynamicResource GeneralSearchWarn}" Foreground="Red" Visibility="Collapsed" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50"/>
-        <Grid x:Name="Menu" Width="250" HorizontalAlignment="Left" Background="#ebebeb" Margin="0 50 0 0">
-            <StackPanel Margin="0 200 0 0">
-                <RadioButton x:Name="Sonical" Style="{DynamicResource MenuToggleButton}" Unchecked="Sonical_Unchecked" Checked="Sonical_Checked" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName1}" />
-                <RadioButton x:Name="ut" Style="{DynamicResource MenuToggleButton}" Unchecked="RadioButton_Unchecked" Checked="RadioButton_Checked" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName2}"/>
-                <RadioButton x:Name="um" Style="{DynamicResource MenuToggleButton}" Unchecked="RadioButton_Unchecked_1" Checked="RadioButton_Checked_1" Width="230" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName3}"/>
-            </StackPanel>
+        
+        <Grid x:Name="Menu" Width="240" HorizontalAlignment="Left"   Margin="0 50 0 0" MouseEnter="Menu_MouseEnter" MouseLeave="Menu_MouseLeave" materialDesign:ShadowAssist.ShadowDepth="Depth2">
+
+            <!--<RadioButton Foreground="{DynamicResource MaterialDesignBody}" Style="{DynamicResource MenuToggleButton}" Padding="10" Width="220" Height="60" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="0 60 0 0" FontSize="13" Content="user" ToolTip="{DynamicResource MenuName1}" Cursor="Hand" />-->
+            <Label x:FieldModifier="public" Visibility="Collapsed" x:Name="ShortSelectedMenu" Content="NO DATA CONTENT" Style="{DynamicResource CustomLabelTitle}" Width="auto" Height="30" Padding="10 0 10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15 0 0 0">
+                <Label.LayoutTransform>
+                    <TransformGroup>
+                        <RotateTransform Angle="90" />
+                        <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                    </TransformGroup>
+                </Label.LayoutTransform>
+            </Label>
+
+            <ScrollViewer x:Name="MenuTree" PreviewMouseWheel="MenuTree_PreviewMouseWheel" Background="Transparent" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Margin="0 200 0 65">
+
+
+
+                <!--<PasswordBox x:Name="_passwordbox" Height="30" FontSize="15" KeyDown="_passwordbox_KeyDown" IsEnabled="True" Password="457877"/>-->
+                    <!--<RadioButton x:Name="Sonical" Foreground="{DynamicResource MaterialDesignBody}" Style="{DynamicResource MenuToggleButton}" Padding="10" Unchecked="Sonical_Unchecked" Checked="Sonical_Checked" Width="220" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName1}" ToolTip="{DynamicResource MenuName1}" Cursor="Hand"/>
+                    <RadioButton x:Name="ut" Foreground="{DynamicResource MaterialDesignBody}" Style="{DynamicResource MenuToggleButton}" Padding="10" Unchecked="RadioButton_Unchecked" Checked="RadioButton_Checked" Width="220" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName2}" ToolTip="{DynamicResource MenuName2}" Cursor="Hand"/>
+                    <RadioButton x:Name="um" Foreground="{DynamicResource MaterialDesignBody}" Style="{DynamicResource MenuToggleButton}" Padding="10" Unchecked="RadioButton_Unchecked_1" Checked="RadioButton_Checked_1" Width="220" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName3}" ToolTip="{DynamicResource MenuName3}" Cursor="Hand"/>-->
+                    <TreeView FontSize="13" >
+                        <TreeViewItem x:Name="Sonical" Header="{DynamicResource MenuName1}" Padding="10" Unselected="Sonical_Unchecked" Selected="Sonical_Checked" Cursor="Hand"/>
+                        <TreeViewItem x:Name="ut" Header="{DynamicResource MenuName2}" Padding="10" Unselected="RadioButton_Unchecked" Selected="RadioButton_Checked" Cursor="Hand"/>
+                        <TreeViewItem x:Name="um" Header="{DynamicResource MenuName3}" Padding="10" Unselected="RadioButton_Unchecked_1" Selected="RadioButton_Checked_1" Cursor="Hand"/>
+                        <TreeViewItem Header="CONTROLE DE NUMERAÇÃO"  Padding="10">
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                            <TreeViewItem Header="Janeiro"/>
+                        </TreeViewItem>
+                    
+
+                </TreeView>
+                
+            
+            </ScrollViewer>
+            <Button Style="{StaticResource MaterialDesignPaperLightButton}" Click="Button_Click" Content="&#xe946;" FontSize="15" UseLayoutRounding="True" Padding="0" Height="30" Width="30" Margin="15 0 0 15" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons" Cursor="Hand">
+                <ToolTipService.ToolTip>
+                    <DynamicResource ResourceKey="ConnectionInfo"/>
+                </ToolTipService.ToolTip>
+            </Button>
         </Grid>
-        <Grid x:Name="grid1" Margin="250 45 0 0">
-            <!--<DataGrid x:Name="datagrid1" MinColumnWidth="140" Loaded="datagrid1_Loaded" FontSize="13" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnHeaderHeight="40" IsReadOnly="True" AutoGenerateColumns="True" Margin="10,80,10,10"/>-->
+        <Grid x:Name="grid1" Margin="240 50 0 0"  >
+            
+            <!--<materialDesign:Card
+                Width="100"
+                Height="100"
+                UniformCornerRadius="50"
+                Padding="4">
+                <ProgressBar
+                    Width="54"
+                    Height="54"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Value="50"
+                    IsIndeterminate="True" />
+            </materialDesign:Card>-->
+            <Label x:Name="Attention0" Foreground="{DynamicResource MaterialDesignBody}" Content="&#xe7ba;" FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons" FontSize="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="Attention1" Foreground="{DynamicResource MaterialDesignBody}" Content="{DynamicResource NoData1}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 200 0 0"/>
+            <!--<DataGrid x:Name="datagridUM" MinColumnWidth="140" Loaded="datagridUM_Loaded" FontSize="13" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ColumnHeaderHeight="40" IsReadOnly="True" AutoGenerateColumns="True" Margin="10,80,10,10"/>-->
         </Grid>
     </Grid>
 </Window>
