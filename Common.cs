@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
+
 namespace ReportManager
 {
 
@@ -139,7 +140,7 @@ namespace ReportManager
             window.Resources.MergedDictionaries.Add(newRes);
         }
 
-        public static void ChangeDatabaseAdress(TextBox textBox)
+        public static void ChangeDatabaseAdress(TextBox textBox, string key, string section)
         {
             IniFile iniFile = new IniFile("config.ini");
             var ofd = new Microsoft.Win32.OpenFileDialog();
@@ -150,7 +151,19 @@ namespace ReportManager
             if (result == false) return;
             textBox.Text = ofd.FileName;
             //Novo Endereço
-            iniFile.Write("DbSN", textBox.Text.ToString(), "Database");
+            iniFile.Write(key, textBox.Text.ToString(), section);
+        }
+
+        public static void ChangeTemplateFolderAdress(TextBox textBox, string key, string section)
+        {
+            IniFile iniFile = new IniFile("config.ini");
+            var ofd = new System.Windows.Forms.FolderBrowserDialog();
+            ofd.SelectedPath = AppDomain.CurrentDomain.BaseDirectory;
+            var result = ofd.ShowDialog();
+            //if (result == false) return;
+            textBox.Text = ofd.SelectedPath;
+            //Novo Endereço
+            iniFile.Write(key, textBox.Text.ToString(), section);
         }
             
     }

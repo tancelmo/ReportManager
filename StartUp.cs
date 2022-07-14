@@ -140,15 +140,12 @@ namespace ReportManager
             if (!File.Exists("config.ini"))
             {
 
-                MessageBoxResult result = MessageBox.Show("Config File Not Found, do ou want create with std configs?", "File not Found", MessageBoxButton.YesNoCancel);
+                MessageBoxResult result = MessageBox.Show(Application.Current.FindResource("ConfigWarn").ToString(), Application.Current.FindResource("ConfigWarnCaption").ToString(), MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     CreateIniFile();
                 }
-                else if (result == MessageBoxResult.No)
-                {
-                    Application.Current.Shutdown();
-                }
+                
                 else
                 {
                     Application.Current.Shutdown();

@@ -22,6 +22,8 @@
         <Label Content="Configurações" FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="13"/>
     </TextBlock>
     <system:String x:Key="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut augue tincidunt, cursus ipsum id, consectetur mauris. Quisque sit amet sem massa. Phasellus fermentum varius purus et venenatis. Morbi et sem ut tortor bibendum ornare. Sed faucibus id ligula ac pulvinar. Duis ligula velit, maximus a erat nec, pretium scelerisque mauris. Nam facilisis felis vel tellus varius, sit amet commodo dui ullamcorper. Maecenas at nulla et lacus aliquet egestas. Praesent commodo, enim nec tristique accumsan, orci ante volutpat odio, ut aliquet lorem nisi eu nibh. Aliquam gravida dictum metus vel rutrum. Duis scelerisque blandit metus quis dignissim. Mauris at molestie felis. In odio ligula, facilisis eget lorem vel, bibendum blandit massa. Nam maximus rhoncus dolor vel bibendum. Donec nec libero tempor, lobortis ante sed, luctus quam. Fusce sagittis consectetur enim et porttitor.</system:String>
+    <system:String x:Key="ConfigWarn">Arquivo de configurção não encontrado. Deseja criar um novo arquivo com as configurações padrão?</system:String>
+    <system:String x:Key="ConfigWarnCaption">Arquivo não encontrado</system:String>
     <!--#region SN Datagrid Headers-->
     
     <system:String x:Key="SNHeader0">ID</system:String>
