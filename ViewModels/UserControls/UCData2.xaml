@@ -30,7 +30,7 @@
             <Label  Grid.Column="1" Grid.Row="1" Foreground="{DynamicResource MaterialDesignBody}" Content="{DynamicResource SnFilterTo}" FontSize="13" Margin="170 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="TbxFinal" Foreground="{DynamicResource MaterialDesignBody}" TextChanged="TbxFinal_TextChanged" Tag="{DynamicResource FinalSN}" UseLayoutRounding="True" Height="27" VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="1" Width="135" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Top" Margin="200 0 0 0" />
             <ComboBox Foreground="{DynamicResource MaterialDesignBody}" ItemContainerStyle="{DynamicResource theComboBoxItem}" x:Name="CbxTemplates" Margin="10 -15 0 0" Text="ReporTemplate_CertificadoDigital" Grid.Column="2" SelectedIndex="0" Grid.Row="0" Width="230" Height="25" HorizontalAlignment="Left" FontSize="13"/>
-            <Button Style="{StaticResource MaterialDesignPaperLightButton}" Margin="10 -10 0 0" UseLayoutRounding="True" Content="Abrir" FontSize="13" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="90" Height="30" Cursor="Hand"/>
+            <Button Style="{StaticResource MaterialDesignPaperLightButton}" Click="Button_Click" Margin="10 -10 0 0" UseLayoutRounding="True" Content="Abrir" FontSize="13" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="90" Height="30" Cursor="Hand"/>
             <Button Style="{StaticResource MaterialDesignPaperLightButton}" Padding="0" Margin="110 -10 0 0" UseLayoutRounding="True" Content="Exportar para Excel" FontSize="13" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="130" Height="30" Cursor="Hand"/>
         </Grid>
 

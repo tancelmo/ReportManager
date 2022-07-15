@@ -31,7 +31,7 @@
             <Label  Grid.Column="1" Foreground="{DynamicResource MaterialDesignBody}" Grid.Row="1" Content="{DynamicResource SnFilterTo}" FontSize="13" Margin="170 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="TbxFinal" Foreground="{DynamicResource MaterialDesignBody}" TextChanged="TbxFinal_TextChanged" UseLayoutRounding="True" Height="27" VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="1" Width="135" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Top" Margin="200 0 0 0" />
             <ComboBox ItemContainerStyle="{DynamicResource theComboBoxItem}" Foreground="{DynamicResource MaterialDesignBody}" x:Name="CbxTemplates" Margin="10 -15 0 0" Text="ReporTemplate_CertificadoDigital" Grid.Column="2" SelectedIndex="0" Grid.Row="0" Width="230" Height="25" HorizontalAlignment="Left" FontSize="13"/>
-            <Button Style="{StaticResource MaterialDesignPaperLightButton}" Margin="10 -10 0 0" UseLayoutRounding="True" Content="Abrir" FontSize="13" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="90" Height="30" Cursor="Hand"/>
+            <Button Style="{StaticResource MaterialDesignPaperLightButton}" Click="Button_Click_1" Margin="10 -10 0 0" UseLayoutRounding="True" Content="Abrir" FontSize="13" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="90" Height="30" Cursor="Hand"/>
             <Button Style="{StaticResource MaterialDesignPaperLightButton}" Margin="110 -10 0 0" Click="Button_Click" UseLayoutRounding="True" Content="Selecionar Tudo" FontSize="13" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="130" Height="30" Cursor="Hand"/>
         </Grid>
 

@@ -21,8 +21,8 @@ namespace ReportManager.ExportsMods
 
             xlapp.Visible = false;
             
-            string sourceFile = Convert.ToString(Directory.GetCurrentDirectory()) + "\\" + iniFile.Read("TemplateFolder1", "DirectoryTemplates") + "\\" + filename + iniFile.Read("ReportExtension", "General");
-            string destFile = Convert.ToString(Directory.GetCurrentDirectory()) + "\\" + iniFile.Read("TemplateFolder1", "DirectoryTemplates") + "\\Temp\\" + "REPORT1" + iniFile.Read("ReportExtension", "General");
+            string sourceFile = Convert.ToString(iniFile.Read("TemplateFolder1", "DirectoryTemplates") + "\\" + filename + iniFile.Read("ReportExtension", "General"));
+            string destFile = Convert.ToString(iniFile.Read("TemplateFolder1", "DirectoryTemplates") + "\\Temp\\" + "REPORT1" + iniFile.Read("ReportExtension", "General"));
             string markUp = iniFile.Read("MarkUP", "General");
             int filecount = 1;
             xlapp.DisplayAlerts = false;
@@ -30,7 +30,7 @@ namespace ReportManager.ExportsMods
             while (File.Exists(destFile))
             {
                 filecount++;
-                destFile = Convert.ToString(Directory.GetCurrentDirectory()) + "\\" + iniFile.Read("TemplateFolder1", "DirectoryTemplates") + "\\Temp\\" + "REPORT" + filecount + iniFile.Read("ReportExtension", "General");
+                destFile = Convert.ToString(iniFile.Read("TemplateFolder1", "DirectoryTemplates") + "\\Temp\\" + "REPORT" + filecount + iniFile.Read("ReportExtension", "General"));
             }
             DataRowView selected = dataGrid.SelectedItem as DataRowView;
 
@@ -41,7 +41,17 @@ namespace ReportManager.ExportsMods
             }
             else
             {
-                File.Copy(sourceFile, destFile, true);
+                try
+                {
+                    File.Copy(sourceFile, destFile, true);
+                }catch (Exception ex)
+                {
+                    LogFile.Write(ex.Message, "#800009");
+                    Mouse.OverrideCursor = null;
+                    return;
+                    
+                }
+                
 
                 Workbook wb = xlapp.Workbooks.Open(destFile);
 
@@ -186,7 +196,7 @@ namespace ReportManager.ExportsMods
                    wb.Worksheets[i].Protect("utg250_614");
 
                 }
-                Mouse.OverrideCursor = Cursors.Arrow;
+                Mouse.OverrideCursor = null;
                 connection.Disconnect();
                 xlapp.DisplayAlerts = true;
                 xlapp.Visible = true;

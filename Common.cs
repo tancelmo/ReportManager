@@ -159,7 +159,7 @@ namespace ReportManager
         public static void ChangeTemplateFolderAdress(TextBox textBox, string key, string section)
         {
             IniFile iniFile = new IniFile("config.ini");
-            
+           // TODO: Adicionar suporte a versoes posteriores ao Windows Vista 
             var dialog = new CommonOpenFileDialog();
             dialog.IsFolderPicker = true;
             CommonFileDialogResult result = dialog.ShowDialog();

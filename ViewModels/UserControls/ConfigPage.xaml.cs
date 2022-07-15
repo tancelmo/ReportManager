@@ -58,7 +58,17 @@ namespace ReportManager.ViewModels.UserControls
             iniFile.Write("PassWordSN", Pbx_1.Password, "TemplatesPasswords");
             //Refresh
             DataRetriever.GetDataAdress();
+            //TODO: Criptografar senhas dos templates SN
+        }
 
+        private void Btn_Pbx_2_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Criptografar senhas dos templates UT
+        }
+
+        private void Btn_Pbx_3_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Criptografar senhas dos templates UM
         }
 
         private void Btn_Folder_Adress1_Change_Click(object sender, RoutedEventArgs e)
@@ -74,6 +84,16 @@ namespace ReportManager.ViewModels.UserControls
         private void Btn_Folder_Adress3_Change_Click(object sender, RoutedEventArgs e)
         {
             Common.ChangeTemplateFolderAdress(Folder_data3, "TemplateFolder2", "DirectoryTemplates");
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //TODO: Adicionar suporte para idiomas
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            //TODO: Adicionar seletor de formato de arquivo
         }
     }
 }

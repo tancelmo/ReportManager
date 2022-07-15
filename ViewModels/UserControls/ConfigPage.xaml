@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <localRoot:Globals x:Key="GlobalVariables"/>
     </UserControl.Resources>
-    <Grid Margin="10">
+    <Grid Margin="10" IsEnabled="True">
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel>
                 <Label x:Name="Theme" FontSize="25" Content="{DynamicResource ConfigHeader}"/>
@@ -83,21 +83,21 @@
                         <Button x:Name="Btn_Pbx_1" Click="Btn_Pbx_1_Click" Style="{StaticResource MaterialDesignPaperLightButton}" Margin="5" UseLayoutRounding="True" Grid.Row="0" Grid.Column="1" Content="Apply" FontWeight="Normal" Width="100" HorizontalAlignment="Center" Cursor="Hand"/>
 
                         <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Foreground="{DynamicResource MaterialDesignBody}" Width="200" Margin="5" Grid.Row="1" Grid.Column="0" Password="PasswordDataBase2" materialDesign:HintAssist.Hint="{DynamicResource MenuName2}" Cursor="IBeam"/>
-                        <Button x:Name="Btn_Pbx_2" Margin="5" Style="{StaticResource MaterialDesignPaperLightButton}" UseLayoutRounding="True" Grid.Row="1" Grid.Column="1" Content="Apply" FontWeight="Normal" Width="100" HorizontalAlignment="Right" Cursor="Hand"/>
+                        <Button x:Name="Btn_Pbx_2" Click="Btn_Pbx_2_Click" Margin="5" Style="{StaticResource MaterialDesignPaperLightButton}" UseLayoutRounding="True" Grid.Row="1" Grid.Column="1" Content="Apply" FontWeight="Normal" Width="100" HorizontalAlignment="Right" Cursor="Hand"/>
 
                         <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Foreground="{DynamicResource MaterialDesignBody}" Width="200" Margin="5" Grid.Row="2" Grid.Column="0" Password="PasswordDataBase3" materialDesign:HintAssist.Hint="{DynamicResource MenuName3}" Cursor="IBeam"/>
-                        <Button x:Name="Btn_Pbx_3" Margin="5" Style="{StaticResource MaterialDesignPaperLightButton}" UseLayoutRounding="True" Grid.Row="2" Grid.Column="1" Content="Apply" FontWeight="Normal" Width="100" HorizontalAlignment="Right" Cursor="Hand"/>
+                        <Button x:Name="Btn_Pbx_3" Click="Btn_Pbx_3_Click" Margin="5" Style="{StaticResource MaterialDesignPaperLightButton}" UseLayoutRounding="True" Grid.Row="2" Grid.Column="1" Content="Apply" FontWeight="Normal" Width="100" HorizontalAlignment="Right" Cursor="Hand"/>
 
                     </Grid>
                     <Label Content="General" Margin="380 420 0 0" FontSize="15"/>
                     <Label Content="Language" Margin="380 450 0 0"/>
-                    <ComboBox Text="Portuguese" Margin="380 380 0 0" FontSize="15" Height="30" SelectedIndex="2" Width="100" HorizontalAlignment="Left" Foreground="{DynamicResource MaterialDesignBody}">
+                    <ComboBox Text="Portuguese" Margin="380 380 0 0" SelectionChanged="ComboBox_SelectionChanged" FontSize="15" Height="30" SelectedIndex="2" Width="100" HorizontalAlignment="Left" Foreground="{DynamicResource MaterialDesignBody}">
                         <ComboBoxItem  Content="English"/>
                         <ComboBoxItem Content="Spanish"/>
                         <ComboBoxItem Content="Portuguese"/>
                     </ComboBox>
                     <Label Content="ExtensionFiles" Margin="380 520 0 0"/>
-                    <ComboBox Text="Portuguese" Margin="380 560 0 0" FontSize="15" Height="30" SelectedIndex="0" SelectedItem="Portuguese" Width="100" HorizontalAlignment="Left" Foreground="{DynamicResource MaterialDesignBody}">
+                    <ComboBox Text="Portuguese" Margin="380 560 0 0" SelectionChanged="ComboBox_SelectionChanged_1" FontSize="15" Height="30" SelectedIndex="0" SelectedItem="Portuguese" Width="100" HorizontalAlignment="Left" Foreground="{DynamicResource MaterialDesignBody}">
                         <ComboBoxItem  Content=".xls"/>
                         <ComboBoxItem Content=".xlsx"/>
                         <ComboBoxItem Content=".xlsm"/>
