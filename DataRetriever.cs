@@ -139,5 +139,25 @@ namespace ReportManager
             
         }
 
+        public static void GetFolderAdress()
+        {
+            IniFile iniFile = new IniFile("config.ini");
+            try
+            {
+                Globals.FolderAdressSN = iniFile.Read("TemplateFolder3", "DirectoryTemplates");
+
+                Globals.FolderAdressUT = iniFile.Read("TemplateFolder1", "DirectoryTemplates");
+
+                Globals.FolderAdressUM = iniFile.Read("TemplateFolder2", "DirectoryTemplates");
+
+                
+            }
+            catch (Exception ex)
+            {
+                LogFile.Write(ex.Message, "#800007");
+            }
+
+        }
+
     }
 }

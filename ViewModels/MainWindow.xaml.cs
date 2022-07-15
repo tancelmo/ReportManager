@@ -4,6 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ReportManager
 {
@@ -20,7 +21,7 @@ namespace ReportManager
         ConfigPage ConfigPage;
         
 
-        
+
 
         public string UserNameLabel; 
         public string UserLevelLabel;
@@ -39,6 +40,7 @@ namespace ReportManager
             
             StartUp.ThemeSwitch(DarkModeToggleButton);
             DataRetriever.GetDataAdress();
+            DataRetriever.GetFolderAdress();
             UserNameLabel = Convert.ToString(FindResource("UserName"));
             UserLevelLabel = Convert.ToString(FindResource("UserLevel"));
 
@@ -415,11 +417,13 @@ namespace ReportManager
             {
                 StartUp.SetTheme(true);
                 Common.ChangeTheme(this, "Dark");
+                Common.ActivedCaptionForeground(MenuButton, BtnClose, BtnRestore, Btn_Config, BtnMinimize, BtnMaximize, IconPopUP, LabelDb);
             }
             else
             {
                 StartUp.SetTheme(false);
                 Common.ChangeTheme(this, "Light");
+                Common.ActivedCaptionForeground(MenuButton, BtnClose, BtnRestore, Btn_Config, BtnMinimize, BtnMaximize, IconPopUP, LabelDb);
             }
             
         }
@@ -607,6 +611,16 @@ namespace ReportManager
             LabelDb.Content = FindResource("MenuConfig");
             LabelDb.ToolTip = FindResource("MenuConfig") + " - " + Globals.DataAdressUT;
             ShortSelectedMenu.Content = FindResource("CurrentData") + "" + FindResource("MenuConfig");
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            Common.ActivedCaptionForeground(MenuButton, BtnClose, BtnRestore, Btn_Config, BtnMinimize, BtnMaximize, IconPopUP, LabelDb);
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            Common.DeactivedCaptionForeground(MenuButton, BtnClose, BtnRestore, Btn_Config, BtnMinimize, BtnMaximize, IconPopUP, LabelDb);
         }
     }
 }

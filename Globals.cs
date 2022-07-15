@@ -13,6 +13,10 @@ namespace ReportManager
         public static string DataAdressUT { get; set; }
         public static string DataAdressUM { get; set; }
 
+        public static string FolderAdressSN { get; set; }
+        public static string FolderAdressUT { get; set; }
+        public static string FolderAdressUM { get; set; }
+
         public static Microsoft.Office.Interop.Excel.Application xlapp { get; set; }
     }
 }

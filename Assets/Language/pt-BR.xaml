@@ -101,8 +101,8 @@
     <TextBlock x:Key="CapsLockWarnLabel" Text="Warning: CapsLock is on"/>
     <TextBlock x:Key="UserName" Text="Taliston A. da Silva"/>
     <TextBlock x:Key="UserLevel" Text="Operador"/>
-    <TextBlock x:Key="NoData" Text="NO DATA SELECTED"/>
-    <TextBlock x:Key="NoData1" Text="NO DATA SELECTED"/>
+    <TextBlock x:Key="NoData" Text="NENHUM DADO SELECIONADO"/>
+    <TextBlock x:Key="NoData1" Text="NENHUM DADO SELECIONADO"/>
     
     <TextBlock x:Key="TooltipUser">
         <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="15" Content="Taliston A. da Silva"/>

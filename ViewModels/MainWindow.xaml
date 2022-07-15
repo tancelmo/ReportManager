@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         SizeChanged="Window_SizeChanged"
         WindowStartupLocation="CenterScreen"
-        
+        Activated="Window_Activated"
+        Deactivated="Window_Deactivated"
         Style="{DynamicResource CustomWindowStyle}"
         Background="{DynamicResource WindowColorBackground}"
         MinWidth="990"
@@ -28,40 +29,7 @@
         
         
         <Grid x:Name="titlebar" VerticalAlignment="Top" Cursor="Hand">
-            <Menu HorizontalAlignment="Left" FontSize="15" Margin="60 5 0 0" Width="auto" Height="30" Background="{DynamicResource WindowColorBackground}" WindowChrome.IsHitTestVisibleInChrome="True">
-                <MenuItem Height="30" Header="File">
-                    <MenuItem Height="30" Header="Opera"/>
-                    <MenuItem Height="30" Header="Config"/>
-                    <MenuItem Height="30" Header="_Edit">
-                        <MenuItem Command="ApplicationCommands.Copy"/>
-                        <MenuItem Command="ApplicationCommands.Cut"/>
-                        <MenuItem Command="ApplicationCommands.Paste">
-                            <MenuItem Height="30" Header="Opera"/>
-                            <MenuItem Height="30" Header="Config"/>
-                            <MenuItem Height="30" Header="_Edit">
-                                <MenuItem Command="ApplicationCommands.Copy"/>
-                                <MenuItem Command="ApplicationCommands.Cut"/>
-                                <MenuItem Command="ApplicationCommands.Paste">
-                                    <MenuItem Height="30" Header="Opera"/>
-                                    <MenuItem Height="30" Header="Config"/>
-                                    <MenuItem Height="30" Header="_Edit">
-                                        <MenuItem Command="ApplicationCommands.Copy"/>
-                                        <MenuItem Command="ApplicationCommands.Cut"/>
-                                        <MenuItem Command="ApplicationCommands.Paste"/>
-                                    </MenuItem>
-                                </MenuItem>
-                            </MenuItem>
-                        </MenuItem>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Height="30" Header="Opera"/>
-                <MenuItem Height="30" Header="Config"/>
-                <MenuItem Height="30" Header="_Edit">
-                    <MenuItem Command="ApplicationCommands.Copy"/>
-                    <MenuItem Command="ApplicationCommands.Cut"/>
-                    <MenuItem Command="ApplicationCommands.Paste"/>
-                </MenuItem>
-            </Menu>
+            
             <Label x:FieldModifier="public" MouseDoubleClick="LabelDb_MouseDoubleClick" x:Name="LabelDb" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Arrow" Content="{DynamicResource NoData}" Style="{DynamicResource CustomLabelTitle}" Width="auto" Height="30" Padding="10 0 10 0" HorizontalAlignment="Right" Margin="0 0 180 0"/>
             <Button x:Name="MenuButton"   
                 UseLayoutRounding="True"
@@ -100,8 +68,9 @@
                             DockPanel.Dock="Right"
                             PlacementMode="BottomAndAlignRightEdges"
                             StaysOpen="False" HorizontalContentAlignment="Center">
+                
                 <materialDesign:PopupBox.ToggleContent>
-                    <materialDesign:PackIcon Kind="DotsHorizontal" 
+                    <materialDesign:PackIcon Kind="DotsHorizontal" x:Name="IconPopUP"
                                 Foreground="{DynamicResource MaterialDesignBody}"                        />
                 </materialDesign:PopupBox.ToggleContent>
                 <StackPanel>
@@ -245,23 +214,10 @@
                     <RadioButton x:Name="ut" Foreground="{DynamicResource MaterialDesignBody}" Style="{DynamicResource MenuToggleButton}" Padding="10" Unchecked="RadioButton_Unchecked" Checked="RadioButton_Checked" Width="220" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName2}" ToolTip="{DynamicResource MenuName2}" Cursor="Hand"/>
                     <RadioButton x:Name="um" Foreground="{DynamicResource MaterialDesignBody}" Style="{DynamicResource MenuToggleButton}" Padding="10" Unchecked="RadioButton_Unchecked_1" Checked="RadioButton_Checked_1" Width="220" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="13" Content="{DynamicResource MenuName3}" ToolTip="{DynamicResource MenuName3}" Cursor="Hand"/>-->
                     <TreeView FontSize="13" >
-                        <TreeViewItem x:Name="Sonical" Header="{DynamicResource MenuName1}" Padding="10" Unselected="Sonical_Unchecked" Selected="Sonical_Checked" Cursor="Hand"/>
-                        <TreeViewItem x:Name="ut" Header="{DynamicResource MenuName2}" Padding="10" Unselected="RadioButton_Unchecked" Selected="RadioButton_Checked" Cursor="Hand"/>
-                        <TreeViewItem x:Name="um" Header="{DynamicResource MenuName3}" Padding="10" Unselected="RadioButton_Unchecked_1" Selected="RadioButton_Checked_1" Cursor="Hand"/>
-                        <TreeViewItem Header="CONTROLE DE NUMERAÇÃO"  Padding="10">
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                            <TreeViewItem Header="Janeiro"/>
-                        </TreeViewItem>
+                        <TreeViewItem x:Name="Sonical" Header="{DynamicResource MenuName1}" Padding="10" Margin="10 0 0 0" Width="200" Unselected="Sonical_Unchecked" Selected="Sonical_Checked" Cursor="Hand"/>
+                    <TreeViewItem x:Name="ut" Header="{DynamicResource MenuName2}" Padding="10" Margin="10 0 0 0" Width="200" Unselected="RadioButton_Unchecked" Selected="RadioButton_Checked" Cursor="Hand"/>
+                    <TreeViewItem x:Name="um" Header="{DynamicResource MenuName3}" Padding="10" Margin="10 0 0 0" Width="200" Unselected="RadioButton_Unchecked_1" Selected="RadioButton_Checked_1" Cursor="Hand"/>
+                        
                     
 
                 </TreeView>

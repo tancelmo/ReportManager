@@ -63,7 +63,17 @@ namespace ReportManager.ViewModels.UserControls
 
         private void Btn_Folder_Adress1_Change_Click(object sender, RoutedEventArgs e)
         {
-            Common.ChangeTemplateFolderAdress(Folder_data1, "TemplateFolder1", "DirectoryTemplates");
+            Common.ChangeTemplateFolderAdress(Folder_data1, "TemplateFolder3", "DirectoryTemplates");
+        }
+
+        private void Btn_Folder_Adress2_Change_Click(object sender, RoutedEventArgs e)
+        {
+            Common.ChangeTemplateFolderAdress(Folder_data2, "TemplateFolder1", "DirectoryTemplates");
+        }
+
+        private void Btn_Folder_Adress3_Change_Click(object sender, RoutedEventArgs e)
+        {
+            Common.ChangeTemplateFolderAdress(Folder_data3, "TemplateFolder2", "DirectoryTemplates");
         }
     }
 }

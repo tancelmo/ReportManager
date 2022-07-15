@@ -7,7 +7,8 @@ using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Windows.Media;
 
 namespace ReportManager
 {
@@ -145,6 +146,7 @@ namespace ReportManager
             IniFile iniFile = new IniFile("config.ini");
             var ofd = new Microsoft.Win32.OpenFileDialog();
             ofd.DefaultExt = ".mdb";
+            
             ofd.Filter = "Microsoft Access Database (.mdb)|*.mdb";
 
             var result = ofd.ShowDialog();
@@ -157,14 +159,47 @@ namespace ReportManager
         public static void ChangeTemplateFolderAdress(TextBox textBox, string key, string section)
         {
             IniFile iniFile = new IniFile("config.ini");
-            var ofd = new System.Windows.Forms.FolderBrowserDialog();
-            ofd.SelectedPath = AppDomain.CurrentDomain.BaseDirectory;
-            var result = ofd.ShowDialog();
-            //if (result == false) return;
-            textBox.Text = ofd.SelectedPath;
-            //Novo Endereço
-            iniFile.Write(key, textBox.Text.ToString(), section);
-        }
             
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if(result == CommonFileDialogResult.Cancel)
+            {
+
+            }
+            else
+            {
+                textBox.Text = dialog.FileName;
+                iniFile.Write(key, textBox.Text.ToString(), section);
+            }
+            
+
+        }
+
+        public static void DeactivedCaptionForeground(Button button, Button button1, Button button2, Button button3, Button button4, Button button5, PackIcon packIcon, Label label)
+        {
+            button.Foreground = Brushes.Gray;
+            button1.Foreground = Brushes.Gray;
+            button2.Foreground = Brushes.Gray;
+            button3.Foreground = Brushes.Gray;
+            button4.Foreground = Brushes.Gray;
+            button5.Foreground = Brushes.Gray;
+            packIcon.Foreground = Brushes.Gray;
+            label.Foreground = Brushes.Gray;
+        }
+
+        public static void ActivedCaptionForeground(Button button, Button button1, Button button2, Button button3, Button button4, Button button5, PackIcon packIcon, Label label)
+        {
+            button.Foreground = (SolidColorBrush)App.Current.Resources["MaterialDesignBody"];
+            button1.Foreground = (SolidColorBrush)App.Current.Resources["MaterialDesignBody"];
+            button2.Foreground = (SolidColorBrush)App.Current.Resources["MaterialDesignBody"];
+            button3.Foreground = (SolidColorBrush)App.Current.Resources["MaterialDesignBody"];
+            button4.Foreground = (SolidColorBrush)App.Current.Resources["MaterialDesignBody"];
+            button5.Foreground = (SolidColorBrush)App.Current.Resources["MaterialDesignBody"];
+            packIcon.Foreground = (SolidColorBrush)App.Current.Resources["MaterialDesignBody"];
+            label.ClearValue(Control.ForegroundProperty);
+
+        }
+
     }
 }
