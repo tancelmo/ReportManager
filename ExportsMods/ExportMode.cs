@@ -2,9 +2,7 @@
 using System;
 using System.Data;
 using System.Data.Odbc;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -156,19 +154,20 @@ namespace ReportManager.ExportsMods
 
                                     while (reader.Read())
                                     {
-                                         if (firstData.Contains("Tests")){
-                                            iniFile.Write("Adress", dataRange[j].get_Address());
-                                            var adress = iniFile.Read("Adress");
-                                            dataRange.Reverse();
-                                          // MessageBox.Show(adress);
-                                            wb.Worksheets[sheetNumber].Range[adress].Insert(XlDirection.xlDown, XlInsertFormatOrigin.xlFormatFromLeftOrAbove);
-                                            wb.Worksheets[sheetNumber].Range[adress] = reader[arg2];
+                                        //TODO: InsertMode on exportsMode
+                                        // if (firstData.Contains("Tests")){
+                                        //    iniFile.Write("Adress", dataRange[j].get_Address());
+                                        //    var adress = iniFile.Read("Adress");
+                                        //    dataRange.Reverse();
+                                        //  // MessageBox.Show(adress);
+                                        //    wb.Worksheets[sheetNumber].Range[adress].Insert(XlDirection.xlDown, XlInsertFormatOrigin.xlFormatFromLeftOrAbove);
+                                        //    wb.Worksheets[sheetNumber].Range[adress] = reader[arg2];
 
-                                        }
+                                        //}
                                         //wb.Worksheets[sheetNumber].Range[dataRange[j].Address].Insert();
                                         wb.Worksheets[sheetNumber].Cells.Replace(firstData, reader[arg2].ToString(), XlLookAt.xlWhole);
                                         //dataRange[j].Insert(XlInsertShiftDirection.xlShiftDown, reader[arg2].ToString() + "\n");
-                                        LogFile.Write(dataRange[j].Address, Convert.ToString(firstData.ToString()) + " " + reader[arg2].ToString());
+                                        //LogFile.Write(dataRange[j].Address, Convert.ToString(firstData.ToString()) + " " + reader[arg2].ToString());
                                         
                                     }
                                 }catch(Exception ex)
