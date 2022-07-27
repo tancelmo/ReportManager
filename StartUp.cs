@@ -29,7 +29,7 @@ namespace ReportManager
                 App.Current.Resources["StatusIndicator2"] = Brushes.Red;
                 App.Current.Resources["ConnectionStatus2"] = "OFFLINE";
 
-                LogFile.Write(ex.Message, "#800001") ;
+                LogFile.Write("#800001", ex.Message) ;
             }
 
             try
@@ -43,7 +43,7 @@ namespace ReportManager
             {
                 App.Current.Resources["StatusIndicator3"] = Brushes.Red;
                 App.Current.Resources["ConnectionStatus3"] = "OFFLINE";
-                LogFile.Write(ex.Message, "#800002");
+                LogFile.Write("#800002", ex.Message);
 
             }
 
@@ -59,7 +59,7 @@ namespace ReportManager
                 
                 App.Current.Resources["StatusIndicator1"] = Brushes.Red;
                 App.Current.Resources["ConnectionStatus1"] = "OFFLINE";
-                LogFile.Write(ex.Message, "#800003");
+                LogFile.Write("#800003", ex.Message);
 
             }
 

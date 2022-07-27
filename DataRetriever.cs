@@ -20,7 +20,7 @@ namespace ReportManager
                 IniFile readIni = new IniFile("config.ini");
                 OdbcConnection connection = new OdbcConnection();
                 connection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb)}; Dbq=" + readIni.Read("DbUT", "Database");
-
+                //connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + readIni.Read("DbUT", "Database") + ";Persist Security Info=True";
 
                 connection.Open();
                 string query = "SELECT Calibrations.CalibrationId, Calibrations.CalibrationDate,  Meters.SerialNumber, Calibrations.Operator, Calibrations.Program, Meters.MeterData1, Meters.MeterData2, Meters.MeterData3, Meters.MeterData4, Meters.MeterData5, Meters.MeterData6, Meters.MeterData7, Meters.MeterData8, Meters.MeterData9, Meters.MeterData10 from Calibrations inner join Meters on Calibrations.CalibrationId=Meters.CalibrationId";// UNION ALL SELECT SerialNumber from Meters";// UNION ALL SELECT Operator, Program from Calibrations UNION ALL SELECT MeterData1, MeterData2, MeterData3, MeterData4, MeterData5, MeterData6, MeterData7, MeterData8, MeterData9, MeterData10 FROM Meters";
@@ -43,7 +43,7 @@ namespace ReportManager
                 
                 App.Current.Resources["StatusIndicator2"] = Brushes.Red;
                 App.Current.Resources["ConnectionStatus2"] = "OFFLINE";
-                LogFile.Write(ex.Message, "#800004");
+                LogFile.Write("#800004", ex.Message);
 
 
 
@@ -81,7 +81,7 @@ namespace ReportManager
 
                 App.Current.Resources["StatusIndicator3"] = Brushes.Red;
                 App.Current.Resources["ConnectionStatus3"] = "OFFLINE";
-                LogFile.Write(ex.Message, "#800005");
+                LogFile.Write("#800005", ex.Message);
             }            
         }
         public static void Data3(DataGrid dataGrid, DataTable data)
@@ -114,7 +114,7 @@ namespace ReportManager
             {
                 App.Current.Resources["StatusIndicator1"] = Brushes.Red;
                 App.Current.Resources["ConnectionStatus1"] = "OFFLINE";
-                LogFile.Write(ex.Message, "#800006");
+                LogFile.Write("#800006", ex.Message);
             }
             
         }
@@ -134,7 +134,7 @@ namespace ReportManager
             }
             catch(Exception ex)
             {
-                LogFile.Write(ex.Message, "#800007");
+                LogFile.Write("#800007", ex.Message);
             }
             
         }
@@ -154,7 +154,7 @@ namespace ReportManager
             }
             catch (Exception ex)
             {
-                LogFile.Write(ex.Message, "#800007");
+                LogFile.Write("#800007", ex.Message);
             }
 
         }

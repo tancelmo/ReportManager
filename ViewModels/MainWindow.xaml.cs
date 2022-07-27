@@ -277,37 +277,23 @@ namespace ReportManager
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Menu.Width == 240)
-            {
-                Animations.AnimateMenuWidth(Menu, 60, false);
-                
-
-                Animations.AnimateMargin(grid1, 60);
-                
-            }
-            
-            else
+            if (Menu.Width == 60)
             {
                 Animations.AnimateMenuWidth(Menu, 240, false);
-                //Sonical.Width = 220;
-                //ut.Width = 220;
-                //um.Width = 220;
-                //Sonical.Content = FindResource("MenuName1");
-                //ut.Content = FindResource("MenuName2");
-                //um.Content = FindResource("MenuName3");
-
-                //Sonical.HorizontalContentAlignment = HorizontalAlignment.Left;
-                //ut.HorizontalContentAlignment = HorizontalAlignment.Left;
-                //um.HorizontalContentAlignment = HorizontalAlignment.Left;
-
-                //Sonical.Padding = new Thickness(10, 0, 0, 0);
-                //um.Padding = new Thickness(10, 0, 0, 0);
-                //ut.Padding = new Thickness(10, 0, 0, 0);
-
                 Animations.AnimateMargin(grid1, 240);
-                
+                ShortSelectedMenu.Visibility = Visibility.Collapsed;
+                MenuTree.Visibility = Visibility.Visible;
+
             }
-            
+            else
+            {
+                Animations.AnimateMenuWidth(Menu, 60, false);
+                Animations.AnimateMargin(grid1, 60);
+                ShortSelectedMenu.Visibility = Visibility.Visible;
+                MenuTree.Visibility = Visibility.Collapsed;
+
+            }
+
 
         }
 
@@ -315,36 +301,6 @@ namespace ReportManager
         {
             
         }
-
-        //private void dispatcherTimer_Tick(object sender, EventArgs e)
-        //{
-        //    if (Menu.Width == 240)
-        //    {
-        //        Animations.AnimateMenuWidth(Menu, 60, false);
-        //        //Sonical.Width = 40;
-        //        //ut.Width = 40;
-        //        //um.Width = 40;
-
-        //        //Sonical.Content = FindResource("MenuShortName1");
-        //        //ut.Content = FindResource("MenuShortName2");
-        //        //um.Content = FindResource("MenuShortName3");
-
-        //        //Sonical.HorizontalContentAlignment = HorizontalAlignment.Center;
-        //        //ut.HorizontalContentAlignment = HorizontalAlignment.Center;
-        //        //um.HorizontalContentAlignment = HorizontalAlignment.Center;
-
-        //        //Sonical.Padding = new Thickness(0, 0, 0, 0);
-        //        //um.Padding = new Thickness(0, 0, 0, 0);
-        //        //ut.Padding = new Thickness(0, 0, 0, 0);
-
-        //        Animations.AnimateMargin(grid1, 60);
-                
-        //    }
-            
-
-
-        //}
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //Common.MenuTimer(dispatcherTimer_Tick);
@@ -358,32 +314,6 @@ namespace ReportManager
             TbxSearch.Focus();
 
         }
-
-        //private void _passwordbox_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if ((Keyboard.GetKeyStates(Key.CapsLock) & KeyStates.Toggled) == KeyStates.Toggled)
-        //    {
-        //        if (_passwordbox.ToolTip == null)
-        //        {
-        //            ToolTip tt = new ToolTip();
-        //            tt.Content = FindResource("CapsLockWarn");
-        //            tt.PlacementTarget = sender as UIElement;
-        //            tt.Placement = PlacementMode.Bottom;
-        //            _passwordbox.ToolTip = tt;
-        //            tt.IsOpen = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        var currentToolTip = _passwordbox.ToolTip as ToolTip;
-        //        if (currentToolTip != null)
-        //        {
-        //            currentToolTip.IsOpen = false;
-        //        }
-
-        //        _passwordbox.ToolTip = null;
-        //    }
-        //}
 
         private void BtnConfig_Click(object sender, RoutedEventArgs e)
         {
@@ -401,15 +331,6 @@ namespace ReportManager
             //MessageBox.Show("oi");
             
         }
-
-        //private readonly PaletteHelper _paletteHelper = new PaletteHelper();
-        //private void ToggleBaseColour(bool isDark)
-        //{
-        //    ITheme theme = _paletteHelper.GetTheme();
-        //    IBaseTheme baseTheme = isDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
-        //    theme.SetBaseTheme(baseTheme);
-        //    _paletteHelper.SetTheme(theme);
-        //}
 
         private void DarkModeToggleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -430,9 +351,6 @@ namespace ReportManager
 
         private void TbxSearch_MouseEnter(object sender, MouseEventArgs e)
         {
-            
-
-            
             //TbxSearch.Foreground = (Brush)FindResource("MaterialDesignBody");
         }
 

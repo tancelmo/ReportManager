@@ -24,8 +24,8 @@ namespace ReportManager.ViewModels.UserControls
         public ConfigPage()
         {
             InitializeComponent();
-
-            
+            Common.ButtonCaptionText(Btn_Folder_Adress1_Change, Btn_Folder_Adress2_Change, Btn_Folder_Adress3_Change, Btn_Adress1_Change, Btn_Adress2_Change, Btn_Adress3_Change, "btnChange");
+            Common.ButtonCaptionText(Btn_Pbx_1, Btn_Pbx_2, Btn_Pbx_3, null, null, null, "btnPswApply");
         }
 
         private void Btn_Adress1_Change_Click(object sender, RoutedEventArgs e)
@@ -58,6 +58,9 @@ namespace ReportManager.ViewModels.UserControls
             iniFile.Write("PassWordSN", Pbx_1.Password, "TemplatesPasswords");
             //Refresh
             DataRetriever.GetDataAdress();
+            Common.ButtonCaptionText(Btn_Pbx_1, null, null, null, null, null, "btnPswApplied");
+            Btn_Pbx_1.IsEnabled = false;
+            Pbx_1.IsEnabled = false;
             //TODO: Criptografar senhas dos templates SN
         }
 

@@ -13,7 +13,7 @@ namespace ReportManager
         {
             using (StreamWriter writer = new StreamWriter("Log.txt", append: true))
             {
-                writer.Write("[" + DateTime.Now + "]: " + localExeption + " " + errMessage + "\n");
+                writer.Write("[" + DateTime.Now + "]: " + errMessage + " " + localExeption + "\n");
             }
         }
     }

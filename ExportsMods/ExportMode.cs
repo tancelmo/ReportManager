@@ -44,7 +44,7 @@ namespace ReportManager.ExportsMods
                     File.Copy(sourceFile, destFile, true);
                 }catch (Exception ex)
                 {
-                    LogFile.Write(ex.Message, "#800009");
+                    LogFile.Write("#800009", ex.Message);
                     Mouse.OverrideCursor = null;
                     return;
                     
@@ -77,7 +77,7 @@ namespace ReportManager.ExportsMods
                 }
                 catch(Exception ex)
                 {
-                    LogFile.Write(ex.Message, "#800005");
+                    LogFile.Write("#800005", ex.Message);
                     
                 }
 
@@ -128,7 +128,7 @@ namespace ReportManager.ExportsMods
                                 }
                                 catch(Exception ex)
                                 {
-                                    LogFile.Write(ex.Message, "#800006");
+                                    LogFile.Write("#800006", ex.Message);
                                 }
 
                             }
@@ -155,24 +155,37 @@ namespace ReportManager.ExportsMods
                                     while (reader.Read())
                                     {
                                         //TODO: InsertMode on exportsMode
-                                        // if (firstData.Contains("Tests")){
+                                        
+                                        //if (firstData.Contains("Tests")){
+                                            
+
                                         //    iniFile.Write("Adress", dataRange[j].get_Address());
                                         //    var adress = iniFile.Read("Adress");
-                                        //    dataRange.Reverse();
-                                        //  // MessageBox.Show(adress);
+                                        //    //    dataRange.Reverse();
+                                        //    //  // MessageBox.Show(adress);
+                                        //    //wb.Worksheets[sheetNumber].Range[adress].EntireRow.Delete();
+                                        //    //  wb.Worksheets[sheetNumber].Range[adress].Delete();
                                         //    wb.Worksheets[sheetNumber].Range[adress].Insert(XlDirection.xlDown, XlInsertFormatOrigin.xlFormatFromLeftOrAbove);
+                                            
                                         //    wb.Worksheets[sheetNumber].Range[adress] = reader[arg2];
-
+                                            
                                         //}
+                                        //else
+                                        //{
+                                        //    wb.Worksheets[sheetNumber].Cells.Replace(firstData, reader[arg2].ToString(), XlLookAt.xlWhole);
+                                        //}
+                                        
+                                        //LogFile.Write("", reader[0].ToString());
                                         //wb.Worksheets[sheetNumber].Range[dataRange[j].Address].Insert();
                                         wb.Worksheets[sheetNumber].Cells.Replace(firstData, reader[arg2].ToString(), XlLookAt.xlWhole);
-                                        //dataRange[j].Insert(XlInsertShiftDirection.xlShiftDown, reader[arg2].ToString() + "\n");
+                                        //dataRang
+                                        //e[j].Insert(XlInsertShiftDirection.xlShiftDown, reader[arg2].ToString() + "\n");
                                         //LogFile.Write(dataRange[j].Address, Convert.ToString(firstData.ToString()) + " " + reader[arg2].ToString());
                                         
                                     }
                                 }catch(Exception ex)
                                 {
-                                    LogFile.Write(ex.Message, "#800007");
+                                    LogFile.Write("#800007", ex.Message);
                                 }
                                 
                             }
@@ -190,7 +203,7 @@ namespace ReportManager.ExportsMods
                 {
 
                    wb.Worksheets[i].Unprotect("utg250_614");
-                    getValeus(i);
+                   getValeus(i);
 
                    wb.Worksheets[i].Protect("utg250_614");
 

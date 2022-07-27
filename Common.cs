@@ -16,7 +16,17 @@ namespace ReportManager
 
     public class Common
     {
-
+        public static void ButtonCaptionText(Button button, Button button1, Button button2, Button button3, Button button4, Button button5, String resourceKey)
+        {
+            string btnContent = Application.Current.FindResource(resourceKey).ToString();
+            
+            if (button != null) { button.Content = btnContent; }
+            if (button1 != null) { button1.Content = btnContent; }
+            if (button2 != null) { button2.Content = btnContent; }
+            if (button3 != null) { button3.Content = btnContent; }
+            if (button4 != null) { button4.Content = btnContent; }
+            if (button5 != null) { button5.Content = btnContent; }
+        }
         public static int CounterSelectedDatagrid(DataGrid dataGrid, int NumberOfColumns)
         {
             return dataGrid.SelectedCells.Count / NumberOfColumns;

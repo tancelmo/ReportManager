@@ -13,7 +13,7 @@ namespace ReportManager
 
         public Connection(string Db)
         {
-            //connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=WMEData.accdb;Persist Security Info=True";
+            //connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Db + ";Persist Security Info=True";
             connection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb)}; Dbq=" + Db + ";";
         }
 

@@ -3,7 +3,9 @@
                     xmlns:local="clr-namespace:ReportManager"
                     xmlns:local2="clr-namespace:ReportManager">
     <local:Globals x:Key="GlobalVariables"/>
-
+    <system:String x:Key="btnChange">Mudar</system:String>
+    <system:String x:Key="btnPswApply">Aplicar</system:String>
+    <system:String x:Key="btnPswApplied">Aplicado</system:String>
     <system:String x:Key="Tittle">Report Manager</system:String>
     <system:String x:Key="InitSN">N de Série Inicial</system:String>
     <system:String x:Key="FinalSN">N de Série Final</system:String>
@@ -104,6 +106,7 @@
     <TextBlock x:Key="NoData" Text="NENHUM DADO SELECIONADO"/>
     <TextBlock x:Key="NoData1" Text="NENHUM DADO SELECIONADO"/>
     
+
     <TextBlock x:Key="TooltipUser">
         <Label FontWeight="{x:Static SystemFonts.MessageFontWeight}" Foreground="{DynamicResource MaterialDesignPaper}" FontFamily="{x:Static SystemFonts.CaptionFontFamily}" FontSize="15" Content="Taliston A. da Silva"/>
         <LineBreak/>
